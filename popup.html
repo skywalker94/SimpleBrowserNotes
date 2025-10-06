@@ -1,0 +1,39 @@
+<!-- popup.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Notes</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="left"></div>
+
+      <div class="center">
+        <div class="palette" id="palette" aria-hidden="true"></div>
+      </div>
+
+      <div class="right">
+        <label class="switch" title="Toggle light/dark">
+          <input type="checkbox" id="themeToggle" />
+          <span class="slider"></span>
+        </label>
+      </div>
+    </header>
+
+    <main class="main">
+      <textarea id="note" placeholder="Start typing... (auto-saved)" aria-label="Note textarea"></textarea>
+    </main>
+
+    <footer class="footer">
+      <div class="center smallcount" id="counts">0 chars • 0 words • 0 rows</div>
+      <span id="saveHint" class="small muted"></span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

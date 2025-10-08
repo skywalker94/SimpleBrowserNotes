@@ -158,9 +158,6 @@
       object-fit: contain;
     }
 
-    .thumb-row{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:6px}
-    .thumb{width:56px;height:38px;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);cursor:pointer;box-shadow:0 6px 16px rgba(2,6,23,0.06)}
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 
     /* install steps */
     section.install{
@@ -221,51 +218,67 @@
       </div>
       <div class="title-group">
         <h1>Simple Notes</h1>
-        <p>A privacy-first Chrome extension for quick note-taking — auto-save, sticky colors, and light/dark themes.</p>
+        <p>A lightweight Chrome extension for quick note-taking — auto-save, colour palette, and light & dark mode.</p>
       </div>
     </header>
 
     <main class="hero" role="main">
       <section class="card">
-        <p class="lead">Tiny and focused: write quick notes without leaving your browser. Everything is stored locally; no accounts, no analytics.</p>
+        <p class="lead">Capture quick, secure notes without ever leaving your browser. Everything is stored locally for maximum privacy.</p>
 
         <div class="cta-row">
-          <a class="btn" href="#install">Get &amp; Install</a>
-          <a class="btn secondary" href="#features">Learn more</a>
+          <a class="btn" href="https://github.com/skywalker94/SimpleBrowserNotes/releases" target="_blank">⏬ Downloads</a>
+          <a class="btn secondary" href="https://github.com/skywalker94/SimpleBrowserNotes" target="_blank">🤖 Git-Hub</a>
           <div style="flex:1"></div>
           <div class="small">Version <strong>1.0.0</strong></div>
         </div>
 
         <div class="features" id="features">
           <div class="feature">
-            <div class="dot">A</div>
+            <div class="dot">📝</div>
             <div>
-              <h4>Minimal note editor</h4>
-              <p>Single textarea, always available and distraction-free.</p>
+              <h4>Clean Design</h4>
+              <p>A single textarea, always available and distraction-free.</p>
             </div>
           </div>
 
           <div class="feature">
-            <div class="dot">B</div>
+            <div class="dot">💾</div>
             <div>
-              <h4>Auto-save</h4>
-              <p>Notes save automatically after a short pause — the footer confirms when the save occurs.</p>
+              <h4>Auto-Save</h4>
+              <p>Quality of life auto-saves. Includes a visual indicator for peace of mind.</p>
             </div>
           </div>
 
           <div class="feature">
-            <div class="dot">C</div>
+            <div class="dot">🎨</div>
             <div>
-              <h4>Sticky palette</h4>
-              <p>Pick from eight sticky background colors to visually organize your notes.</p>
+              <h4>Colour Palette</h4>
+              <p>Choose your own aesthetic, with the pleasant background colours.</p>
             </div>
           </div>
 
           <div class="feature">
-            <div class="dot">D</div>
+            <div class="dot">🔒</div>
             <div>
-              <h4>Privacy-first</h4>
-              <p>Everything stays local — no network calls, no trackers, no accounts.</p>
+              <h4>Privacy-First</h4>
+              <p>Everything stays local - no network calls, trackers, and analytics.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="dot">🛋️</div>
+            <div>
+              <h4>Light / Dark</h4>
+              <p>A switch to toggle between light & dark modes, as per preference.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="dot">🧮</div>
+            <div>
+              <h4>Keep Count</h4>
+              <p>Enjoy a fun little counter, that tracks characters, words, and rows.</p>
             </div>
           </div>
         </div>
@@ -273,9 +286,9 @@
         <div style="margin-top:18px">
           <h4 style="margin:0 0 8px 0">Quick tips</h4>
           <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
-            <li>Text stays black even in dark mode for readability.</li>
-            <li>Freely switch between the colours.</li>
-            <li>With the extension open, multitask by scrolling the webpage and taking notes simultaneously.</li>
+            <li>Multitask by scrolling the webpage and taking notes with the extension open simultaneously.</li>
+            <li>You can leverage the char, word and row counter to analyze the size and structure of text snippets.</li>
+            <li>Take advantage of the MIT license and repository linked above. Feel free to fork the code and customise it to your liking.</li>
           </ul>
         </div>
       </section>
@@ -291,71 +304,78 @@
         </div>
 
         <div class="preview-image" id="previewWrap" aria-hidden="false">
-          <img id="previewImg" src="images/written.png" alt="Simple Notes demo screenshot">
+          <img id="previewImg" src="images/blank_light.png" alt="Simple Notes demo screenshot">
         </div>
 
-        <div class="thumb-row" aria-hidden="true">
-          <div class="thumb" data-src="images/written.png" title="written">
-            <img src="images/written.png" alt="">
-          </div>
-          <div class="thumb" data-src="images/blank_light.png" title="blank light">
-            <img src="images/blank_light.png" alt="">
-          </div>
-          <div class="thumb" data-src="images/blank_dark.png" title="blank dark">
-            <img src="images/blank_dark.png" alt="">
-          </div>
-        </div>
-
-        <p class="muted-quiet" style="margin-top:8px">Screenshots show the popup UI: a single textarea, color palette on top, and light/dark themes.</p>
+        <p class="muted-quiet" style="margin-top:8px">The UI screenshots show: A blank light mode, blank dark mode, and dark mode with a poem.</p>
       </aside>
     </main>
 
     <section class="install" id="install">
       <div class="steps">
-        <h3 style="margin:0 0 6px 0">Install (developer mode)</h3>
+        <h3 style="margin:0 0 6px 0">Setup Guide</h3>
 
         <div class="step">
-          <div class="num">1</div>
-          <p>Download or clone the repository to a folder on your machine.</p>
+          <div class="num">📥</div>
+          <p>From the releases page of the GitHub repository linked above, download the ZIP <code>(.zip)</code> file of the <strong>latest release</strong>.</p>
         </div>
 
         <div class="step">
-          <div class="num">2</div>
-          <p>Open Chrome (or Brave) and go to <code class="k">chrome://extensions/</code>. Enable <strong>Developer mode</strong>.</p>
+          <div class="num">📁</div>
+          <p>Extract the files into your folder of choice. This will become the location where you host the chrome extension.</p>
         </div>
 
         <div class="step">
-          <div class="num">3</div>
-          <p>Click <strong>Load unpacked</strong> and select the extension folder. The extension icon will appear in your toolbar.</p>
+          <div class="num">⚙️</div>
+          <p>Navigate to <code class="k">chrome://extensions/</code> in the browser. You can also find this by clicking the menu button and looking for <strong>Manage Extensions</strong>.</p>
         </div>
 
         <div class="step">
-          <div class="num">4</div>
-          <p>To update: overwrite files in the folder and click <em>Reload</em> on the extension card in <code class="k">chrome://extensions/</code>.</p>
+          <div class="num">☑️</div>
+          <p>Enable <strong>Developer mode</strong>, if you have not done this before. It is usually found in the top right corner.</p>
+        </div>
+
+        <div class="step">
+          <div class="num">🟢</div>
+          <p>Click <strong>Load unpacked</strong> and select the folder you extracted the ZIP files into in step 2. The chosen folder should contain <code>manifest.json</code>.</p>
+        </div>
+
+        <h3 style="margin:0 0 6px 0">Updates</h3>
+
+        <div class="step">
+          <div class="num">🔄️</div>
+          <p>Fetch a the new version from the <strong>Downloads</strong> above. Replace the existing files in the folder that hosts your extension. Click the <strong>reload icon</strong> on the card in <code class="k">chrome://extensions/</code>.</p>
         </div>
       </div>
 
       <aside class="meta">
+        <h3 style="margin:0 0 6px 0">Future Ideas</h3>
+
         <div class="meta-card">
-          <h5>Auto-save behavior</h5>
-          <p class="small">The editor auto-saves after a brief pause. The footer displays "Auto-saved" when the content is persisted.</p>
+          <h5>Support multiple tabs</h5>
+          <p class="small">Maintain the simple aesthetic, but provide a way to have a few more concurrent notes that the user can easily switch between.</p>
         </div>
 
         <div class="meta-card">
-          <h5>Privacy</h5>
-          <p class="small">No network requests, no analytics, no accounts. Data remains in your browser's local storage.</p>
+          <h5>Contents to clipboard</h5>
+          <p class="small">Provide a way to quickly copy contents to clipboard. Would be a lovely QoL change for some usage styles.</p>
         </div>
 
         <div class="meta-card">
-          <h5>Files</h5>
-          <p class="small">Includes <code>manifest.json</code>, <code>popup.html</code>, <code>popup.js</code>, and <code>popup.css</code>.</p>
+          <h5>Chrome store listing</h5>
+          <p class="small">If the initial reception is positive, the extension may be published on the Chrome Web Store for wider adoption.</p>
+        </div>
+
+        <div class="meta-card">
+          <h5>Selected text clipper</h5>
+          <p class="small">Add a right-click context menu option to instantly copy selected text/links from a webpage into your notes.</p>
         </div>
       </aside>
     </section>
 
     <footer class="site-footer">
       <div>Made with ❤️ — MIT License • Privacy-minded by design</div>
-      <div style="margin-top:8px;font-size:12px;color:#94a3b8">Images and icons included locally. No external resources are loaded.</div>
+      <div style="margin-top:8px;font-size:12px;color:#94a3b8">The author has an ethical request for anyone who adopts this project, to kindly keep future versions free of trackers and analytics.</div>
     </footer>
   </div>
 
@@ -375,11 +395,6 @@
       btnLight.addEventListener('click', ()=>{ previewImg.src = 'images/blank_light.png'; setActive(btnLight); });
       btnDark.addEventListener('click', ()=>{ previewImg.src = 'images/blank_dark.png'; setActive(btnDark); });
       btnWritten.addEventListener('click', ()=>{ previewImg.src = 'images/written.png'; setActive(btnWritten); });
-
-      // thumbnail quick switch
-      document.querySelectorAll('.thumb').forEach(t=>{
-        t.addEventListener('click', ()=>{ const s = t.getAttribute('data-src'); if(s){ previewImg.src = s; setActive(null); } });
-      });
 
       // default active
       setActive(btnWritten);

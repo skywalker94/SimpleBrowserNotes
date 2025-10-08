@@ -3,6 +3,10 @@
 A **privacy-first Chrome extension** for quick note-taking.  
 Features include **auto-save**, **sticky color palette**, **character/word/row counters**, and **light/dark themes** — all running locally and securely.
 
+#### 🌐 Webpage
+
+This is primarily a [user focused webpage](https://github.com/skywalker94/SimpleBrowserNotes). It shows off the features at a glance and links the releases for easy downloads.
+
 ---
 
 ## 📸 Extension Image

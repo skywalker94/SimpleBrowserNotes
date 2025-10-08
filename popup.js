@@ -85,7 +85,7 @@ function showSaveHint(){
 }
 function hideSaveHint(){
   if(!saveHintEl) return;
-  saveHintEl.textContent = 'Changes not saved ⚠️';
+  saveHintEl.textContent = '📝';
 }
 
 // ----------------- Events -----------------

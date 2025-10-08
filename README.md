@@ -130,7 +130,6 @@ There is no cloud sync; everything stays on your device.
 ## 💡 Tips & Best Practices
 
 - Keep the popup open to reference notes; autosave runs silently.
-- Expand popup for longer notes.
 - Avoid extremely large text blocks — designed for **quick notes**.
 
 ---

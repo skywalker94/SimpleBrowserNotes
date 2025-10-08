@@ -304,7 +304,7 @@
         </div>
 
         <div class="preview-image" id="previewWrap" aria-hidden="false">
-          <img id="previewImg" src="images/blank_light.png" alt="Simple Notes demo screenshot">
+          <img id="previewImg" src="site_images/blank_light.png" alt="Simple Notes demo screenshot">
         </div>
 
         <p class="muted-quiet" style="margin-top:8px">The UI screenshots show: A blank light mode, blank dark mode, and dark mode with a poem.</p>
@@ -392,9 +392,9 @@
         chips.forEach(c=> c.classList.toggle('active', c === activeBtn));
       }
 
-      btnLight.addEventListener('click', ()=>{ previewImg.src = 'images/blank_light.png'; setActive(btnLight); });
-      btnDark.addEventListener('click', ()=>{ previewImg.src = 'images/blank_dark.png'; setActive(btnDark); });
-      btnWritten.addEventListener('click', ()=>{ previewImg.src = 'images/written.png'; setActive(btnWritten); });
+      btnLight.addEventListener('click', ()=>{ previewImg.src = 'site_images/blank_light.png'; setActive(btnLight); });
+      btnDark.addEventListener('click', ()=>{ previewImg.src = 'site_images/blank_dark.png'; setActive(btnDark); });
+      btnWritten.addEventListener('click', ()=>{ previewImg.src = 'site_images/written.png'; setActive(btnWritten); });
 
       // default active
       setActive(btnWritten);

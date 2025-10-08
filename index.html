@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Notes — Lightweight private notes for Chrome</title>
+  <meta name="description" content="Simple Notes — a tiny, privacy-first Chrome extension for quick notes. Auto-save, sticky colors, light/dark themes, and local storage." />
+  <link rel="icon" href="images/logo_128.png">
+  <style>
+    :root{
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #2979ff;
+      --accent-2: #76ff03;
+      --radius: 12px;
+      --maxwidth: 980px;
+      --shadow: 0 8px 30px rgba(16,24,40,0.08);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', monospace;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#0f172a;
+      background: linear-gradient(180deg, #f7fafc 0%, #ffffff 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:48px 16px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--maxwidth);
+    }
+
+    header.site-header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+    .logo{
+      width:72px;
+      height:72px;
+      border-radius:14px;
+      background:linear-gradient(135deg,#fff 0%, #fff 100%);
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .logo img{width:64px;height:64px;display:block}
+
+    .title-group h1{
+      margin:0;
+      font-size:22px;
+      line-height:1.05;
+    }
+    .title-group p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+    main.hero{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:start;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .lead{
+      font-size:16px;
+      color:#0b1220;
+      margin:0 0 14px;
+    }
+
+    .cta-row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:10px;
+      background:var(--accent);
+      color:white;
+      font-weight:600;
+      text-decoration:none;
+      box-shadow: 0 6px 18px rgba(41,121,255,0.18);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--accent);
+      border:1px solid rgba(41,121,255,0.12);
+      box-shadow:none;
+    }
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Features list */
+    .features{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+    .feature{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .feature .dot{
+      width:44px;height:44px;border-radius:10px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent);
+      flex-shrink:0;
+    }
+    .feature h4{margin:0;font-size:14px}
+    .feature p{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    /* screenshot card */
+    .preview-card{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:stretch;
+    }
+    .preview-image{
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(12,18,30,0.04);
+      background:#ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+    }
+    .preview-image img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 520px;
+      margin: 0 auto;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .thumb-row{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:6px}
+    .thumb{width:56px;height:38px;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,0.06);cursor:pointer;box-shadow:0 6px 16px rgba(2,6,23,0.06)}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* install steps */
+    section.install{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:22px;
+      align-items:start;
+    }
+    .steps{display:flex;flex-direction:column;gap:12px}
+    .step{
+      background:linear-gradient(180deg,#ffffff,#fbfdff);
+      border-radius:10px;padding:12px;border:1px solid rgba(12,18,30,0.04);
+      display:flex;gap:12px;align-items:flex-start;
+    }
+    .step .num{width:36px;height:36px;border-radius:8px;background:#f8fafc;color:#0b1220;display:flex;align-items:center;justify-content:center;font-weight:700}
+    .step p{margin:0;color:var(--muted);font-size:14px}
+
+    aside.meta{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .meta .meta-card{padding:12px;border-radius:10px;border:1px solid rgba(12,18,30,0.04);background:linear-gradient(180deg,#fff,#fbfdff)}
+    .meta h5{margin:0 0 6px;font-size:13px}
+    .meta p{margin:0;color:var(--muted);font-size:13px}
+
+    footer.site-footer{
+      margin-top:34px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      padding:20px 8px;
+    }
+
+    /* responsive */
+    @media (max-width:980px){
+      main.hero{grid-template-columns:1fr}
+      section.install{grid-template-columns:1fr}
+    }
+
+    /* dark preview toggle (small control) */
+    .preview-controls{display:flex;gap:8px;align-items:center;justify-content:center}
+    .chip{padding:8px 12px;border-radius:999px;background:#f1f5f9;color:#0b1220;font-weight:600;border:1px solid rgba(12,18,30,0.04);cursor:pointer}
+    .chip.active{background:linear-gradient(90deg,#eef2ff,#f0fff4)}
+    code.k{font-family:var(--mono);font-size:13px;color:#0f172a;background:#eef2ff;padding:3px 6px;border-radius:6px}
+
+    /* small fine-tuning */
+    .muted-quiet{color:#94a3b8;font-size:13px}
+    .centered{display:flex;align-items:center;gap:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <div class="logo card" aria-hidden="true">
+        <img src="images/logo_512.png" alt="Simple Notes logo">
+      </div>
+      <div class="title-group">
+        <h1>Simple Notes</h1>
+        <p>A privacy-first Chrome extension for quick note-taking — auto-save, sticky colors, and light/dark themes.</p>
+      </div>
+    </header>
+
+    <main class="hero" role="main">
+      <section class="card">
+        <p class="lead">Tiny and focused: write quick notes without leaving your browser. Everything is stored locally; no accounts, no analytics.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="#install">Get &amp; Install</a>
+          <a class="btn secondary" href="#features">Learn more</a>
+          <div style="flex:1"></div>
+          <div class="small">Version <strong>1.0.0</strong></div>
+        </div>
+
+        <div class="features" id="features">
+          <div class="feature">
+            <div class="dot">A</div>
+            <div>
+              <h4>Minimal note editor</h4>
+              <p>Single textarea, always available and distraction-free.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="dot">B</div>
+            <div>
+              <h4>Auto-save</h4>
+              <p>Notes save automatically after a short pause — the footer confirms when the save occurs.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="dot">C</div>
+            <div>
+              <h4>Sticky palette</h4>
+              <p>Pick from eight sticky background colors to visually organize your notes.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="dot">D</div>
+            <div>
+              <h4>Privacy-first</h4>
+              <p>Everything stays local — no network calls, no trackers, no accounts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <h4 style="margin:0 0 8px 0">Quick tips</h4>
+          <ul style="margin:0 0 0 18px;color:var(--muted);font-size:14px">
+            <li>Text stays black even in dark mode for readability.</li>
+            <li>Freely switch between the colours.</li>
+            <li>With the extension open, multitask by scrolling the webpage and taking notes simultaneously.</li>
+          </ul>
+        </div>
+      </section>
+
+      <aside class="card preview-card" aria-label="Preview and screenshots">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:700">Live preview</div>
+          <div class="preview-controls" role="tablist" aria-label="Preview controls">
+            <button id="btn_light" class="chip">Light</button>
+            <button id="btn_dark" class="chip">Dark</button>
+            <button id="btn_written" class="chip">Written</button>
+          </div>
+        </div>
+
+        <div class="preview-image" id="previewWrap" aria-hidden="false">
+          <img id="previewImg" src="images/written.png" alt="Simple Notes demo screenshot">
+        </div>
+
+        <div class="thumb-row" aria-hidden="true">
+          <div class="thumb" data-src="images/written.png" title="written">
+            <img src="images/written.png" alt="">
+          </div>
+          <div class="thumb" data-src="images/blank_light.png" title="blank light">
+            <img src="images/blank_light.png" alt="">
+          </div>
+          <div class="thumb" data-src="images/blank_dark.png" title="blank dark">
+            <img src="images/blank_dark.png" alt="">
+          </div>
+        </div>
+
+        <p class="muted-quiet" style="margin-top:8px">Screenshots show the popup UI: a single textarea, color palette on top, and light/dark themes.</p>
+      </aside>
+    </main>
+
+    <section class="install" id="install">
+      <div class="steps">
+        <h3 style="margin:0 0 6px 0">Install (developer mode)</h3>
+
+        <div class="step">
+          <div class="num">1</div>
+          <p>Download or clone the repository to a folder on your machine.</p>
+        </div>
+
+        <div class="step">
+          <div class="num">2</div>
+          <p>Open Chrome (or Brave) and go to <code class="k">chrome://extensions/</code>. Enable <strong>Developer mode</strong>.</p>
+        </div>
+
+        <div class="step">
+          <div class="num">3</div>
+          <p>Click <strong>Load unpacked</strong> and select the extension folder. The extension icon will appear in your toolbar.</p>
+        </div>
+
+        <div class="step">
+          <div class="num">4</div>
+          <p>To update: overwrite files in the folder and click <em>Reload</em> on the extension card in <code class="k">chrome://extensions/</code>.</p>
+        </div>
+      </div>
+
+      <aside class="meta">
+        <div class="meta-card">
+          <h5>Auto-save behavior</h5>
+          <p class="small">The editor auto-saves after a brief pause. The footer displays "Auto-saved" when the content is persisted.</p>
+        </div>
+
+        <div class="meta-card">
+          <h5>Privacy</h5>
+          <p class="small">No network requests, no analytics, no accounts. Data remains in your browser's local storage.</p>
+        </div>
+
+        <div class="meta-card">
+          <h5>Files</h5>
+          <p class="small">Includes <code>manifest.json</code>, <code>popup.html</code>, <code>popup.js</code>, and <code>popup.css</code>.</p>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="site-footer">
+      <div>Made with ❤️ — MIT License • Privacy-minded by design</div>
+      <div style="margin-top:8px;font-size:12px;color:#94a3b8">Images and icons included locally. No external resources are loaded.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Small client-side interactions for the static page preview
+    (function(){
+      const previewImg = document.getElementById('previewImg');
+      const btnWritten = document.getElementById('btn_written');
+      const btnLight = document.getElementById('btn_light');
+      const btnDark = document.getElementById('btn_dark');
+      const chips = [btnWritten, btnLight, btnDark];
+
+      function setActive(activeBtn){
+        chips.forEach(c=> c.classList.toggle('active', c === activeBtn));
+      }
+
+      btnLight.addEventListener('click', ()=>{ previewImg.src = 'images/blank_light.png'; setActive(btnLight); });
+      btnDark.addEventListener('click', ()=>{ previewImg.src = 'images/blank_dark.png'; setActive(btnDark); });
+      btnWritten.addEventListener('click', ()=>{ previewImg.src = 'images/written.png'; setActive(btnWritten); });
+
+      // thumbnail quick switch
+      document.querySelectorAll('.thumb').forEach(t=>{
+        t.addEventListener('click', ()=>{ const s = t.getAttribute('data-src'); if(s){ previewImg.src = s; setActive(null); } });
+      });
+
+      // default active
+      setActive(btnWritten);
+    })();
+  </script>
+</body>
+</html>

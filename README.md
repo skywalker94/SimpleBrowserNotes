@@ -5,7 +5,7 @@ Features include **auto-save**, **sticky color palette**, **character/word/row c
 
 #### 🌐 Webpage
 
-This is primarily a [user focused webpage](https://github.com/skywalker94/SimpleBrowserNotes). It shows off the features at a glance and links the releases for easy downloads.
+This is primarily a [user focused webpage](https://skywalker94.github.io/SimpleBrowserNotes/). It shows off the features at a glance and links the releases for easy downloads.
 
 ---
 

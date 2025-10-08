@@ -1,0 +1,25 @@
+{
+"manifest_version": 3,
+"name": "Simple Notes",
+"description": "A one-page, lightweight note-taking popup with auto-save, markdown support, themes and colors.",
+"version": "1.0.0",
+"icons": {
+    "32": "images/logo_36.png",
+    "48": "images/logo_64.png",
+    "128": "images/logo_128.png",
+    "512": "images/logo_512.png"
+},
+"action": {
+"default_popup": "popup.html",
+"default_icon": {
+    "16": "images/logo_36.png",
+    "32": "images/logo_64.png",
+    "128": "images/logo_128.png"
+}
+},
+"permissions": [
+    "storage"
+],
+"host_permissions": [],
+"minimum_chrome_version": "88"
+}
